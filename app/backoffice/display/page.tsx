@@ -8,14 +8,11 @@ export default async function Page() {
 
    return (
    <div>
-      <h1>Add</h1>
+      <h1>Display</h1>
       <ul>
          {articles.map((article: Article) => (
             <li key={article.id}>{article.title}</li>
          ))}
       </ul>
-      <form>
-         <input type="text" name="title" placeholder="title" className="px-2 py-1 rounded-sm border-2" />
-      </form>
    </div>);
 }

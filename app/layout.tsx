@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/theme-toggle";
 
 const geistSans = Geist({
    variable: "--font-geist-sans",
@@ -30,11 +31,16 @@ export default function RootLayout({
          <body className={cn(geistSans.variable, geistMono.variable)}>
             <ThemeProvider
                attribute="class"
-               defaultTheme="system"
+               defaultTheme="light"
                enableSystem
                disableTransitionOnChange
             >
-               {children}
+               <div className="flex flex-col align-items gap-3 px-5 py-5">
+                  <div className="absolute top-0 right-0 px-1 py-1">
+                     <ModeToggle />
+                  </div>
+                  {children}
+               </div>
                <Toaster />
             </ThemeProvider>
          </body>
