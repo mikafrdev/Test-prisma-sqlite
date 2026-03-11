@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { PageLayout } from "@/layout";
 import Link from "next/link";
-import styles from "./styles/HomePage.module.css"; // Fichier CSS Module pour la page
+import styles from "./styles/HomePage.module.css";
 
 export default function Home() {
    return (
