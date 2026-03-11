@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/theme-toggle";
+import  BreadcrumbBasic from "@/components/BreadcrumbBasic";
 
 const geistSans = Geist({
    variable: "--font-geist-sans",
@@ -31,14 +32,15 @@ export default function RootLayout({
          <body className={cn(geistSans.variable, geistMono.variable)}>
             <ThemeProvider
                attribute="class"
-               defaultTheme="light"
+               defaultTheme="system"
                enableSystem
                disableTransitionOnChange
             >
-               <div className="flex flex-col align-items gap-3 px-5 py-5">
-                  <div className="absolute top-0 right-0 px-1 py-1">
-                     <ModeToggle />
-                  </div>
+               <div className="absolute top-0 right-0">
+                  <ModeToggle />
+               </div>
+               <div className="flex flex-col w-full items-center py-5 px-5">
+                  <BreadcrumbBasic />
                   {children}
                </div>
                <Toaster />

@@ -1,0 +1,23 @@
+.homeContainer {
+  width: 100%;
+  padding: 20px;
+}
+
+.homeCards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.homeCard {
+  width: 100%;
+  max-width: 400px;
+}
+
+.homeCard:hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
