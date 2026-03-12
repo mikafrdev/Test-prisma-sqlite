@@ -11,8 +11,17 @@
 
 export const Role = {
   ADMIN: 'ADMIN',
-  AUTHOR: 'AUTHOR',
-  READER: 'READER'
+  USER: 'USER'
 } as const
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const LinkType = {
+  SOCIAL: 'SOCIAL',
+  PERSONAL: 'PERSONAL',
+  MEDIA: 'MEDIA',
+  OTHER: 'OTHER'
+} as const
+
+export type LinkType = (typeof LinkType)[keyof typeof LinkType]

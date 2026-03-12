@@ -9,27 +9,37 @@ datasource db {
 
 enum Role {
   ADMIN
-  AUTHOR
-  READER
+  USER
 }
 
+enum LinkType {
+  SOCIAL
+  PERSONAL
+  MEDIA
+  OTHER
+}
+
+/**
+ * ********  ESPACE PERSO  **********
+ */
+
 model User {
-  id        Int       @id @default(autoincrement())
-  name      String
+  id        String    @id @default(uuid(7))
+  firstname      String?
+  lastname     String?
+  nickname      String? @unique 
   email     String    @unique
   password  String
-  role      Role      @default(READER)
-  articles  Article[]
-  comments  Comment[]
-  accounts  Account[]
-  sessions  Session[]
+  role      Role      @default(USER)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  accounts Account[]
+  sessions Session[]
 }
 
 model Account {
   id                Int     @id @default(autoincrement())
-  userId            Int
+  userId            String
   user              User    @relation(fields: [userId], references: [id])
   provider          String
   providerAccountId String
@@ -43,25 +53,34 @@ model Account {
 }
 
 model Session {
-  id           Int      @id @default(autoincrement())
-  userId       Int
+  id           String   @id @default(uuid(7))
+  userId       String
   user         User     @relation(fields: [userId], references: [id])
   sessionToken String   @unique
   expires      DateTime
 }
 
+/**
+ * ********  ARTICLES  **********
+ */
+
 model Article {
-  id         Int       @id @default(autoincrement())
-  title      String
+  id         String    @id @default(uuid(7))
+  title      String    @unique
   slug       String    @unique
-  content    String
+  content    String    
   published  Boolean   @default(false)
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
-  author     User      @relation(fields: [authorId], references: [id])
-  authorId   Int
+
+  // Relations
+  authorId   Int?
+  author     Author?      @relation(fields: [authorId], references: [id])
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int?
+
+  // Relations
+  videos     Video[]
   comments   Comment[]
 }
 
@@ -69,14 +88,99 @@ model Category {
   id       Int       @id @default(autoincrement())
   name     String    @unique
   articles Article[]
+  videos   Video[]
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid(7))
   content   String
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
   article   Article  @relation(fields: [articleId], references: [id])
-  articleId Int
+  articleId String
   createdAt DateTime @default(now())
+}
+
+model Video {
+  id String @id @default(uuid(7))
+
+  // Informations de base
+  title       String
+  description String?
+  filename    String
+  filepath    String
+  url         String?
+  thumbnail   String?
+
+  // Métadonnées techniques
+  duration Int?
+  width    Int?
+  height   Int?
+  fps      Float?
+  bitrate  Int?
+  format   String?
+  codec    String?
+  size     Int?
+
+  // Classement / organisation
+  tags     String?
+  language String?
+  status   String  @default("draft")
+
+  // Statistiques
+  views    Int @default(0)
+  likes    Int @default(0)
+  dislikes Int @default(0)
+
+  // Relations
+  articleId   String?
+  article     Article?     @relation(fields: [articleId], references: [id])
+  authorId   Int?
+  author     Author?     @relation(fields: [authorId], references: [id])
+  categoryId Int?
+  category   Category? @relation(fields: [categoryId], references: [id])
+  tagId      Int?
+  tag        Tag?      @relation(fields: [tagId], references: [id])
+
+  // Dates
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+}
+
+model Tag {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  videos Video[]
+}
+
+model Author {
+  id Int @id @default(autoincrement())
+
+  // Informations de base
+  username String @unique
+
+
+  // Profil
+  firstName String?
+  lastName  String?
+  avatar    String?
+  bio       String?
+  websites  String?
+
+  // Rôle & statut
+  isVerified Boolean @default(false)
+
+  // Relations
+  articles    Article[]
+  videos Video[]
+  links AuthorLink[]
+}
+
+model AuthorLink {
+  id       Int      @id @default(autoincrement())
+  url      String
+  label    String // ex: "Twitter", "Mon blog"
+  type     LinkType
+  authorId Int
+  author   Author   @relation(fields: [authorId], references: [id])
+  
 }

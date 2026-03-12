@@ -9,12 +9,13 @@ import {
 } from "@/components/ui/card";
 import { PageLayout } from "@/layout";
 import Link from "next/link";
+import cn from 'classnames';
 import styles from "./styles/HomePage.module.css";
 
 export default function Home() {
    return (
       <PageLayout>
-         <main className={styles.homeContainer}>
+         <main className={cn(styles.homeContainer, "mainContainer")}>
             <h1 className="w-full py-4 text-2xl">Test Prisma Sqlite</h1>
 
             <div className={styles.homeCards}>

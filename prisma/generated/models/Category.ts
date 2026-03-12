@@ -193,12 +193,14 @@ export type CategoryWhereInput = {
   id?: Prisma.IntFilter<"Category"> | number
   name?: Prisma.StringFilter<"Category"> | string
   articles?: Prisma.ArticleListRelationFilter
+  videos?: Prisma.VideoListRelationFilter
 }
 
 export type CategoryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   articles?: Prisma.ArticleOrderByRelationAggregateInput
+  videos?: Prisma.VideoOrderByRelationAggregateInput
 }
 
 export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -208,6 +210,7 @@ export type CategoryWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CategoryWhereInput[]
   NOT?: Prisma.CategoryWhereInput | Prisma.CategoryWhereInput[]
   articles?: Prisma.ArticleListRelationFilter
+  videos?: Prisma.VideoListRelationFilter
 }, "id" | "name">
 
 export type CategoryOrderByWithAggregationInput = {
@@ -231,23 +234,27 @@ export type CategoryScalarWhereWithAggregatesInput = {
 export type CategoryCreateInput = {
   name: string
   articles?: Prisma.ArticleCreateNestedManyWithoutCategoryInput
+  videos?: Prisma.VideoCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateInput = {
   id?: number
   name: string
   articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCategoryInput
+  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   articles?: Prisma.ArticleUpdateManyWithoutCategoryNestedInput
+  videos?: Prisma.VideoUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   articles?: Prisma.ArticleUncheckedUpdateManyWithoutCategoryNestedInput
+  videos?: Prisma.VideoUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryCreateManyInput = {
@@ -308,13 +315,31 @@ export type CategoryUpdateOneWithoutArticlesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutArticlesInput, Prisma.CategoryUpdateWithoutArticlesInput>, Prisma.CategoryUncheckedUpdateWithoutArticlesInput>
 }
 
+export type CategoryCreateNestedOneWithoutVideosInput = {
+  create?: Prisma.XOR<Prisma.CategoryCreateWithoutVideosInput, Prisma.CategoryUncheckedCreateWithoutVideosInput>
+  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutVideosInput
+  connect?: Prisma.CategoryWhereUniqueInput
+}
+
+export type CategoryUpdateOneWithoutVideosNestedInput = {
+  create?: Prisma.XOR<Prisma.CategoryCreateWithoutVideosInput, Prisma.CategoryUncheckedCreateWithoutVideosInput>
+  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutVideosInput
+  upsert?: Prisma.CategoryUpsertWithoutVideosInput
+  disconnect?: Prisma.CategoryWhereInput | boolean
+  delete?: Prisma.CategoryWhereInput | boolean
+  connect?: Prisma.CategoryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutVideosInput, Prisma.CategoryUpdateWithoutVideosInput>, Prisma.CategoryUncheckedUpdateWithoutVideosInput>
+}
+
 export type CategoryCreateWithoutArticlesInput = {
   name: string
+  videos?: Prisma.VideoCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateWithoutArticlesInput = {
   id?: number
   name: string
+  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryCreateOrConnectWithoutArticlesInput = {
@@ -335,11 +360,51 @@ export type CategoryUpdateToOneWithWhereWithoutArticlesInput = {
 
 export type CategoryUpdateWithoutArticlesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  videos?: Prisma.VideoUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateWithoutArticlesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  videos?: Prisma.VideoUncheckedUpdateManyWithoutCategoryNestedInput
+}
+
+export type CategoryCreateWithoutVideosInput = {
+  name: string
+  articles?: Prisma.ArticleCreateNestedManyWithoutCategoryInput
+}
+
+export type CategoryUncheckedCreateWithoutVideosInput = {
+  id?: number
+  name: string
+  articles?: Prisma.ArticleUncheckedCreateNestedManyWithoutCategoryInput
+}
+
+export type CategoryCreateOrConnectWithoutVideosInput = {
+  where: Prisma.CategoryWhereUniqueInput
+  create: Prisma.XOR<Prisma.CategoryCreateWithoutVideosInput, Prisma.CategoryUncheckedCreateWithoutVideosInput>
+}
+
+export type CategoryUpsertWithoutVideosInput = {
+  update: Prisma.XOR<Prisma.CategoryUpdateWithoutVideosInput, Prisma.CategoryUncheckedUpdateWithoutVideosInput>
+  create: Prisma.XOR<Prisma.CategoryCreateWithoutVideosInput, Prisma.CategoryUncheckedCreateWithoutVideosInput>
+  where?: Prisma.CategoryWhereInput
+}
+
+export type CategoryUpdateToOneWithWhereWithoutVideosInput = {
+  where?: Prisma.CategoryWhereInput
+  data: Prisma.XOR<Prisma.CategoryUpdateWithoutVideosInput, Prisma.CategoryUncheckedUpdateWithoutVideosInput>
+}
+
+export type CategoryUpdateWithoutVideosInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  articles?: Prisma.ArticleUpdateManyWithoutCategoryNestedInput
+}
+
+export type CategoryUncheckedUpdateWithoutVideosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  articles?: Prisma.ArticleUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 
@@ -349,10 +414,12 @@ export type CategoryUncheckedUpdateWithoutArticlesInput = {
 
 export type CategoryCountOutputType = {
   articles: number
+  videos: number
 }
 
 export type CategoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   articles?: boolean | CategoryCountOutputTypeCountArticlesArgs
+  videos?: boolean | CategoryCountOutputTypeCountVideosArgs
 }
 
 /**
@@ -372,11 +439,19 @@ export type CategoryCountOutputTypeCountArticlesArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ArticleWhereInput
 }
 
+/**
+ * CategoryCountOutputType without action
+ */
+export type CategoryCountOutputTypeCountVideosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VideoWhereInput
+}
+
 
 export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   articles?: boolean | Prisma.Category$articlesArgs<ExtArgs>
+  videos?: boolean | Prisma.Category$videosArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["category"]>
 
@@ -398,6 +473,7 @@ export type CategorySelectScalar = {
 export type CategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
 export type CategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   articles?: boolean | Prisma.Category$articlesArgs<ExtArgs>
+  videos?: boolean | Prisma.Category$videosArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -407,6 +483,7 @@ export type $CategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "Category"
   objects: {
     articles: Prisma.$ArticlePayload<ExtArgs>[]
+    videos: Prisma.$VideoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -806,6 +883,7 @@ readonly fields: CategoryFieldRefs;
 export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   articles<T extends Prisma.Category$articlesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$articlesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  videos<T extends Prisma.Category$videosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$videosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1033,6 +1111,11 @@ export type CategoryFindManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Skip the first `n` Categories.
    */
   skip?: number
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+   * 
+   * Filter by unique combinations of Categories.
+   */
   distinct?: Prisma.CategoryScalarFieldEnum | Prisma.CategoryScalarFieldEnum[]
 }
 
@@ -1244,6 +1327,30 @@ export type Category$articlesArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ArticleScalarFieldEnum | Prisma.ArticleScalarFieldEnum[]
+}
+
+/**
+ * Category.videos
+ */
+export type Category$videosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Video
+   */
+  select?: Prisma.VideoSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Video
+   */
+  omit?: Prisma.VideoOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VideoInclude<ExtArgs> | null
+  where?: Prisma.VideoWhereInput
+  orderBy?: Prisma.VideoOrderByWithRelationInput | Prisma.VideoOrderByWithRelationInput[]
+  cursor?: Prisma.VideoWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VideoScalarFieldEnum | Prisma.VideoScalarFieldEnum[]
 }
 
 /**

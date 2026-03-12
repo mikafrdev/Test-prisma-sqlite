@@ -47,3 +47,23 @@ export type Category = Prisma.CategoryModel
  * 
  */
 export type Comment = Prisma.CommentModel
+/**
+ * Model Video
+ * 
+ */
+export type Video = Prisma.VideoModel
+/**
+ * Model Tag
+ * 
+ */
+export type Tag = Prisma.TagModel
+/**
+ * Model Author
+ * 
+ */
+export type Author = Prisma.AuthorModel
+/**
+ * Model AuthorLink
+ * 
+ */
+export type AuthorLink = Prisma.AuthorLinkModel

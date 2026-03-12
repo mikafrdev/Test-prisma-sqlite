@@ -56,7 +56,11 @@ export const ModelName = {
   Session: 'Session',
   Article: 'Article',
   Category: 'Category',
-  Comment: 'Comment'
+  Comment: 'Comment',
+  Video: 'Video',
+  Tag: 'Tag',
+  Author: 'Author',
+  AuthorLink: 'AuthorLink'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,7 +78,9 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
-  name: 'name',
+  firstname: 'firstname',
+  lastname: 'lastname',
+  nickname: 'nickname',
   email: 'email',
   password: 'password',
   role: 'role',
@@ -138,12 +144,78 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 export const CommentScalarFieldEnum = {
   id: 'id',
   content: 'content',
-  authorId: 'authorId',
   articleId: 'articleId',
   createdAt: 'createdAt'
 } as const
 
 export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+export const VideoScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  filename: 'filename',
+  filepath: 'filepath',
+  url: 'url',
+  thumbnail: 'thumbnail',
+  duration: 'duration',
+  width: 'width',
+  height: 'height',
+  fps: 'fps',
+  bitrate: 'bitrate',
+  format: 'format',
+  codec: 'codec',
+  size: 'size',
+  tags: 'tags',
+  language: 'language',
+  status: 'status',
+  views: 'views',
+  likes: 'likes',
+  dislikes: 'dislikes',
+  articleId: 'articleId',
+  authorId: 'authorId',
+  categoryId: 'categoryId',
+  tagId: 'tagId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  publishedAt: 'publishedAt'
+} as const
+
+export type VideoScalarFieldEnum = (typeof VideoScalarFieldEnum)[keyof typeof VideoScalarFieldEnum]
+
+
+export const TagScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type TagScalarFieldEnum = (typeof TagScalarFieldEnum)[keyof typeof TagScalarFieldEnum]
+
+
+export const AuthorScalarFieldEnum = {
+  id: 'id',
+  username: 'username',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  avatar: 'avatar',
+  bio: 'bio',
+  websites: 'websites',
+  isVerified: 'isVerified'
+} as const
+
+export type AuthorScalarFieldEnum = (typeof AuthorScalarFieldEnum)[keyof typeof AuthorScalarFieldEnum]
+
+
+export const AuthorLinkScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  label: 'label',
+  type: 'type',
+  authorId: 'authorId'
+} as const
+
+export type AuthorLinkScalarFieldEnum = (typeof AuthorLinkScalarFieldEnum)[keyof typeof AuthorLinkScalarFieldEnum]
 
 
 export const SortOrder = {
