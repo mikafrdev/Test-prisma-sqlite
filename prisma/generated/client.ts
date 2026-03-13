@@ -91,3 +91,8 @@ export type Author = Prisma.AuthorModel
  * 
  */
 export type AuthorLink = Prisma.AuthorLinkModel
+/**
+ * Model Image
+ * 
+ */
+export type Image = Prisma.ImageModel

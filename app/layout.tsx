@@ -36,7 +36,7 @@ export default function RootLayout({
                enableSystem
                disableTransitionOnChange
             >
-               <div className="absolute top-0 right-0">
+               <div className="absolute top-1 right-1">
                   <ModeToggle />
                </div>
                <div className="flex flex-col w-full items-center py-5 px-5">

@@ -60,7 +60,8 @@ export const ModelName = {
   Video: 'Video',
   Tag: 'Tag',
   Author: 'Author',
-  AuthorLink: 'AuthorLink'
+  AuthorLink: 'AuthorLink',
+  Image: 'Image'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -216,6 +217,24 @@ export const AuthorLinkScalarFieldEnum = {
 } as const
 
 export type AuthorLinkScalarFieldEnum = (typeof AuthorLinkScalarFieldEnum)[keyof typeof AuthorLinkScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  filename: 'filename',
+  filepath: 'filepath',
+  alt: 'alt',
+  caption: 'caption',
+  width: 'width',
+  height: 'height',
+  size: 'size',
+  format: 'format',
+  articleId: 'articleId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
 
 
 export const SortOrder = {

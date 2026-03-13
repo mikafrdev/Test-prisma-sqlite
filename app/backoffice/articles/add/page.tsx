@@ -1,6 +1,6 @@
-import { createArticle } from "../../../actions/article";
+import { createArticle } from "@/actions/article";
 import { Button } from "@/components/ui/button";
-import { prisma } from "../../../src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { Article } from "@/prisma/generated/client";
 import {
    Field,

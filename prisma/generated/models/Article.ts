@@ -255,6 +255,7 @@ export type ArticleWhereInput = {
   author?: Prisma.XOR<Prisma.AuthorNullableScalarRelationFilter, Prisma.AuthorWhereInput> | null
   category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.CategoryWhereInput> | null
   videos?: Prisma.VideoListRelationFilter
+  images?: Prisma.ImageListRelationFilter
   comments?: Prisma.CommentListRelationFilter
 }
 
@@ -271,6 +272,7 @@ export type ArticleOrderByWithRelationInput = {
   author?: Prisma.AuthorOrderByWithRelationInput
   category?: Prisma.CategoryOrderByWithRelationInput
   videos?: Prisma.VideoOrderByRelationAggregateInput
+  images?: Prisma.ImageOrderByRelationAggregateInput
   comments?: Prisma.CommentOrderByRelationAggregateInput
 }
 
@@ -290,6 +292,7 @@ export type ArticleWhereUniqueInput = Prisma.AtLeast<{
   author?: Prisma.XOR<Prisma.AuthorNullableScalarRelationFilter, Prisma.AuthorWhereInput> | null
   category?: Prisma.XOR<Prisma.CategoryNullableScalarRelationFilter, Prisma.CategoryWhereInput> | null
   videos?: Prisma.VideoListRelationFilter
+  images?: Prisma.ImageListRelationFilter
   comments?: Prisma.CommentListRelationFilter
 }, "id" | "title" | "slug">
 
@@ -336,6 +339,7 @@ export type ArticleCreateInput = {
   author?: Prisma.AuthorCreateNestedOneWithoutArticlesInput
   category?: Prisma.CategoryCreateNestedOneWithoutArticlesInput
   videos?: Prisma.VideoCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentCreateNestedManyWithoutArticleInput
 }
 
@@ -350,6 +354,7 @@ export type ArticleUncheckedCreateInput = {
   authorId?: number | null
   categoryId?: number | null
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageUncheckedCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutArticleInput
 }
 
@@ -364,6 +369,7 @@ export type ArticleUpdateInput = {
   author?: Prisma.AuthorUpdateOneWithoutArticlesNestedInput
   category?: Prisma.CategoryUpdateOneWithoutArticlesNestedInput
   videos?: Prisma.VideoUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUpdateManyWithoutArticleNestedInput
 }
 
@@ -378,6 +384,7 @@ export type ArticleUncheckedUpdateInput = {
   authorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   videos?: Prisma.VideoUncheckedUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUncheckedUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutArticleNestedInput
 }
 
@@ -599,6 +606,22 @@ export type ArticleUncheckedUpdateManyWithoutAuthorNestedInput = {
   deleteMany?: Prisma.ArticleScalarWhereInput | Prisma.ArticleScalarWhereInput[]
 }
 
+export type ArticleCreateNestedOneWithoutImagesInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutImagesInput, Prisma.ArticleUncheckedCreateWithoutImagesInput>
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutImagesInput
+  connect?: Prisma.ArticleWhereUniqueInput
+}
+
+export type ArticleUpdateOneWithoutImagesNestedInput = {
+  create?: Prisma.XOR<Prisma.ArticleCreateWithoutImagesInput, Prisma.ArticleUncheckedCreateWithoutImagesInput>
+  connectOrCreate?: Prisma.ArticleCreateOrConnectWithoutImagesInput
+  upsert?: Prisma.ArticleUpsertWithoutImagesInput
+  disconnect?: Prisma.ArticleWhereInput | boolean
+  delete?: Prisma.ArticleWhereInput | boolean
+  connect?: Prisma.ArticleWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ArticleUpdateToOneWithWhereWithoutImagesInput, Prisma.ArticleUpdateWithoutImagesInput>, Prisma.ArticleUncheckedUpdateWithoutImagesInput>
+}
+
 export type ArticleCreateWithoutCategoryInput = {
   id?: string
   title: string
@@ -609,6 +632,7 @@ export type ArticleCreateWithoutCategoryInput = {
   updatedAt?: Date | string
   author?: Prisma.AuthorCreateNestedOneWithoutArticlesInput
   videos?: Prisma.VideoCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentCreateNestedManyWithoutArticleInput
 }
 
@@ -622,6 +646,7 @@ export type ArticleUncheckedCreateWithoutCategoryInput = {
   updatedAt?: Date | string
   authorId?: number | null
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageUncheckedCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutArticleInput
 }
 
@@ -676,6 +701,7 @@ export type ArticleCreateWithoutCommentsInput = {
   author?: Prisma.AuthorCreateNestedOneWithoutArticlesInput
   category?: Prisma.CategoryCreateNestedOneWithoutArticlesInput
   videos?: Prisma.VideoCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageCreateNestedManyWithoutArticleInput
 }
 
 export type ArticleUncheckedCreateWithoutCommentsInput = {
@@ -689,6 +715,7 @@ export type ArticleUncheckedCreateWithoutCommentsInput = {
   authorId?: number | null
   categoryId?: number | null
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageUncheckedCreateNestedManyWithoutArticleInput
 }
 
 export type ArticleCreateOrConnectWithoutCommentsInput = {
@@ -718,6 +745,7 @@ export type ArticleUpdateWithoutCommentsInput = {
   author?: Prisma.AuthorUpdateOneWithoutArticlesNestedInput
   category?: Prisma.CategoryUpdateOneWithoutArticlesNestedInput
   videos?: Prisma.VideoUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUpdateManyWithoutArticleNestedInput
 }
 
 export type ArticleUncheckedUpdateWithoutCommentsInput = {
@@ -731,6 +759,7 @@ export type ArticleUncheckedUpdateWithoutCommentsInput = {
   authorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   videos?: Prisma.VideoUncheckedUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUncheckedUpdateManyWithoutArticleNestedInput
 }
 
 export type ArticleCreateWithoutVideosInput = {
@@ -743,6 +772,7 @@ export type ArticleCreateWithoutVideosInput = {
   updatedAt?: Date | string
   author?: Prisma.AuthorCreateNestedOneWithoutArticlesInput
   category?: Prisma.CategoryCreateNestedOneWithoutArticlesInput
+  images?: Prisma.ImageCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentCreateNestedManyWithoutArticleInput
 }
 
@@ -756,6 +786,7 @@ export type ArticleUncheckedCreateWithoutVideosInput = {
   updatedAt?: Date | string
   authorId?: number | null
   categoryId?: number | null
+  images?: Prisma.ImageUncheckedCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutArticleInput
 }
 
@@ -785,6 +816,7 @@ export type ArticleUpdateWithoutVideosInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.AuthorUpdateOneWithoutArticlesNestedInput
   category?: Prisma.CategoryUpdateOneWithoutArticlesNestedInput
+  images?: Prisma.ImageUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUpdateManyWithoutArticleNestedInput
 }
 
@@ -798,6 +830,7 @@ export type ArticleUncheckedUpdateWithoutVideosInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   authorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  images?: Prisma.ImageUncheckedUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutArticleNestedInput
 }
 
@@ -811,6 +844,7 @@ export type ArticleCreateWithoutAuthorInput = {
   updatedAt?: Date | string
   category?: Prisma.CategoryCreateNestedOneWithoutArticlesInput
   videos?: Prisma.VideoCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentCreateNestedManyWithoutArticleInput
 }
 
@@ -824,6 +858,7 @@ export type ArticleUncheckedCreateWithoutAuthorInput = {
   updatedAt?: Date | string
   categoryId?: number | null
   videos?: Prisma.VideoUncheckedCreateNestedManyWithoutArticleInput
+  images?: Prisma.ImageUncheckedCreateNestedManyWithoutArticleInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutArticleInput
 }
 
@@ -852,6 +887,78 @@ export type ArticleUpdateManyWithWhereWithoutAuthorInput = {
   data: Prisma.XOR<Prisma.ArticleUpdateManyMutationInput, Prisma.ArticleUncheckedUpdateManyWithoutAuthorInput>
 }
 
+export type ArticleCreateWithoutImagesInput = {
+  id?: string
+  title: string
+  slug: string
+  content: string
+  published?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  author?: Prisma.AuthorCreateNestedOneWithoutArticlesInput
+  category?: Prisma.CategoryCreateNestedOneWithoutArticlesInput
+  videos?: Prisma.VideoCreateNestedManyWithoutArticleInput
+  comments?: Prisma.CommentCreateNestedManyWithoutArticleInput
+}
+
+export type ArticleUncheckedCreateWithoutImagesInput = {
+  id?: string
+  title: string
+  slug: string
+  content: string
+  published?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  authorId?: number | null
+  categoryId?: number | null
+  videos?: Prisma.VideoUncheckedCreateNestedManyWithoutArticleInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutArticleInput
+}
+
+export type ArticleCreateOrConnectWithoutImagesInput = {
+  where: Prisma.ArticleWhereUniqueInput
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutImagesInput, Prisma.ArticleUncheckedCreateWithoutImagesInput>
+}
+
+export type ArticleUpsertWithoutImagesInput = {
+  update: Prisma.XOR<Prisma.ArticleUpdateWithoutImagesInput, Prisma.ArticleUncheckedUpdateWithoutImagesInput>
+  create: Prisma.XOR<Prisma.ArticleCreateWithoutImagesInput, Prisma.ArticleUncheckedCreateWithoutImagesInput>
+  where?: Prisma.ArticleWhereInput
+}
+
+export type ArticleUpdateToOneWithWhereWithoutImagesInput = {
+  where?: Prisma.ArticleWhereInput
+  data: Prisma.XOR<Prisma.ArticleUpdateWithoutImagesInput, Prisma.ArticleUncheckedUpdateWithoutImagesInput>
+}
+
+export type ArticleUpdateWithoutImagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  author?: Prisma.AuthorUpdateOneWithoutArticlesNestedInput
+  category?: Prisma.CategoryUpdateOneWithoutArticlesNestedInput
+  videos?: Prisma.VideoUpdateManyWithoutArticleNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutArticleNestedInput
+}
+
+export type ArticleUncheckedUpdateWithoutImagesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  content?: Prisma.StringFieldUpdateOperationsInput | string
+  published?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  authorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  videos?: Prisma.VideoUncheckedUpdateManyWithoutArticleNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutArticleNestedInput
+}
+
 export type ArticleCreateManyCategoryInput = {
   id?: string
   title: string
@@ -873,6 +980,7 @@ export type ArticleUpdateWithoutCategoryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.AuthorUpdateOneWithoutArticlesNestedInput
   videos?: Prisma.VideoUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUpdateManyWithoutArticleNestedInput
 }
 
@@ -886,6 +994,7 @@ export type ArticleUncheckedUpdateWithoutCategoryInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   authorId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   videos?: Prisma.VideoUncheckedUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUncheckedUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutArticleNestedInput
 }
 
@@ -921,6 +1030,7 @@ export type ArticleUpdateWithoutAuthorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   category?: Prisma.CategoryUpdateOneWithoutArticlesNestedInput
   videos?: Prisma.VideoUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUpdateManyWithoutArticleNestedInput
 }
 
@@ -934,6 +1044,7 @@ export type ArticleUncheckedUpdateWithoutAuthorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categoryId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   videos?: Prisma.VideoUncheckedUpdateManyWithoutArticleNestedInput
+  images?: Prisma.ImageUncheckedUpdateManyWithoutArticleNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutArticleNestedInput
 }
 
@@ -955,11 +1066,13 @@ export type ArticleUncheckedUpdateManyWithoutAuthorInput = {
 
 export type ArticleCountOutputType = {
   videos: number
+  images: number
   comments: number
 }
 
 export type ArticleCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   videos?: boolean | ArticleCountOutputTypeCountVideosArgs
+  images?: boolean | ArticleCountOutputTypeCountImagesArgs
   comments?: boolean | ArticleCountOutputTypeCountCommentsArgs
 }
 
@@ -983,6 +1096,13 @@ export type ArticleCountOutputTypeCountVideosArgs<ExtArgs extends runtime.Types.
 /**
  * ArticleCountOutputType without action
  */
+export type ArticleCountOutputTypeCountImagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ImageWhereInput
+}
+
+/**
+ * ArticleCountOutputType without action
+ */
 export type ArticleCountOutputTypeCountCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CommentWhereInput
 }
@@ -1001,6 +1121,7 @@ export type ArticleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   author?: boolean | Prisma.Article$authorArgs<ExtArgs>
   category?: boolean | Prisma.Article$categoryArgs<ExtArgs>
   videos?: boolean | Prisma.Article$videosArgs<ExtArgs>
+  images?: boolean | Prisma.Article$imagesArgs<ExtArgs>
   comments?: boolean | Prisma.Article$commentsArgs<ExtArgs>
   _count?: boolean | Prisma.ArticleCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["article"]>
@@ -1050,6 +1171,7 @@ export type ArticleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs
   author?: boolean | Prisma.Article$authorArgs<ExtArgs>
   category?: boolean | Prisma.Article$categoryArgs<ExtArgs>
   videos?: boolean | Prisma.Article$videosArgs<ExtArgs>
+  images?: boolean | Prisma.Article$imagesArgs<ExtArgs>
   comments?: boolean | Prisma.Article$commentsArgs<ExtArgs>
   _count?: boolean | Prisma.ArticleCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1068,6 +1190,7 @@ export type $ArticlePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     author: Prisma.$AuthorPayload<ExtArgs> | null
     category: Prisma.$CategoryPayload<ExtArgs> | null
     videos: Prisma.$VideoPayload<ExtArgs>[]
+    images: Prisma.$ImagePayload<ExtArgs>[]
     comments: Prisma.$CommentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1477,6 +1600,7 @@ export interface Prisma__ArticleClient<T, Null = never, ExtArgs extends runtime.
   author<T extends Prisma.Article$authorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$authorArgs<ExtArgs>>): Prisma.Prisma__AuthorClient<runtime.Types.Result.GetResult<Prisma.$AuthorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   category<T extends Prisma.Article$categoryArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$categoryArgs<ExtArgs>>): Prisma.Prisma__CategoryClient<runtime.Types.Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   videos<T extends Prisma.Article$videosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$videosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VideoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  images<T extends Prisma.Article$imagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comments<T extends Prisma.Article$commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Article$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1974,6 +2098,30 @@ export type Article$videosArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.VideoScalarFieldEnum | Prisma.VideoScalarFieldEnum[]
+}
+
+/**
+ * Article.images
+ */
+export type Article$imagesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Image
+   */
+  select?: Prisma.ImageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Image
+   */
+  omit?: Prisma.ImageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ImageInclude<ExtArgs> | null
+  where?: Prisma.ImageWhereInput
+  orderBy?: Prisma.ImageOrderByWithRelationInput | Prisma.ImageOrderByWithRelationInput[]
+  cursor?: Prisma.ImageWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ImageScalarFieldEnum | Prisma.ImageScalarFieldEnum[]
 }
 
 /**

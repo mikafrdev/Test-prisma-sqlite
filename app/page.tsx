@@ -21,107 +21,35 @@ export default function Home() {
             <div className={styles.homeCards}>
                <Card className={styles.homeCard}>
                   <CardHeader>
-                     <CardTitle>Administration</CardTitle>
+                     <CardTitle>Articles</CardTitle>
                      <CardDescription>
-                        Retrouver ici tous les services pour gérer
-                        l&apos;administration
+                        Backoffice
                      </CardDescription>
                   </CardHeader>
                   <CardContent>
                      <ul>
-                        <li>Affichez les actualités</li>
-                        <li>Ajoutez une actualité</li>
-                        <li>Mettez à jour les actualités</li>
-                        <li>Supprimez les actualités</li>
+                        <li><Button variant="outline"><Link href="/backoffice/articles/list">Afficher / Supprimez les actualités</Link></Button></li>
+                        <li><Button variant="secondary"><Link href="/backoffice/articles/add">Ajouter une actualité</Link></Button></li>
+                        <li><Button variant="secondary"><Link href="/backoffice/articles/edit">Mettre à jour les actualités</Link></Button></li>
                      </ul>
                   </CardContent>
-                  <CardFooter className="justify-center">
-                     <Button variant="outline">
-                        <Link href="/backoffice/all">Backoffice ALL</Link>
-                     </Button>
-                  </CardFooter>
                </Card>
                <Card className={styles.homeCard}>
                   <CardHeader>
-                     <CardTitle>Administration</CardTitle>
+                     <CardTitle>Category</CardTitle>
                      <CardDescription>
-                        Retrouver ici tous les services pour gérer
-                        l&apos;administration
+                        Backoffice
                      </CardDescription>
                   </CardHeader>
                   <CardContent>
                      <ul>
-                        <li>Affichez les actualités</li>
+                        <li><Button variant="outline"><Link href="/backoffice/category/list">Afficher / Supprimez les category</Link></Button></li>
+                        <li><Button variant="secondary"><Link href="/backoffice/category/add">Ajouter une category</Link></Button></li>
+                        <li><Button variant="secondary"><Link href="/backoffice/category/edit">Mettre à jour les category</Link></Button></li>
                      </ul>
                   </CardContent>
-                  <CardFooter className="justify-center">
-                     <Button variant="outline">
-                        <Link href="/backoffice/display">
-                           Backoffice DISPLAY
-                        </Link>
-                     </Button>
-                  </CardFooter>
                </Card>
-
-               <Card className={styles.homeCard}>
-                  <CardHeader>
-                     <CardTitle>Administration</CardTitle>
-                     <CardDescription>
-                        Retrouver ici tous les services pour gérer
-                        l&apos;administration
-                     </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                     <ul>
-                        <li>Affichez les actualités</li>
-                     </ul>
-                  </CardContent>
-                  <CardFooter className="justify-center">
-                     <Button variant="outline">
-                        <Link href="/backoffice/add">Backoffice ADD</Link>
-                     </Button>
-                  </CardFooter>
-               </Card>
-
-               <Card className={styles.homeCard}>
-                  <CardHeader>
-                     <CardTitle>Administration</CardTitle>
-                     <CardDescription>
-                        Retrouver ici tous les services pour gérer
-                        l&apos;administration
-                     </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                     <ul>
-                        <li>Affichez les actualités</li>
-                     </ul>
-                  </CardContent>
-                  <CardFooter className="justify-center">
-                     <Button variant="outline">
-                        <Link href="/backoffice/update">Backoffice UPDATE</Link>
-                     </Button>
-                  </CardFooter>
-               </Card>
-
-               <Card className={styles.homeCard}>
-                  <CardHeader>
-                     <CardTitle>Administration</CardTitle>
-                     <CardDescription>
-                        Retrouver ici tous les services pour gérer
-                        l&apos;administration
-                     </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                     <ul>
-                        <li>Affichez les actualités</li>
-                     </ul>
-                  </CardContent>
-                  <CardFooter className="justify-center">
-                     <Button variant="outline">
-                        <Link href="/backoffice/delete">Backoffice DELETE</Link>
-                     </Button>
-                  </CardFooter>
-               </Card>
+               
             </div>
          </main>
       </PageLayout>

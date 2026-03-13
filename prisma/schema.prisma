@@ -81,6 +81,7 @@ model Article {
 
   // Relations
   videos     Video[]
+  images Image[]
   comments   Comment[]
 }
 
@@ -183,4 +184,27 @@ model AuthorLink {
   authorId Int
   author   Author   @relation(fields: [authorId], references: [id])
   
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+
+  // Fichier
+  filename  String
+  filepath  String   // chemin relatif depuis public/ ex: /images/photo.jpg
+  alt       String?  // texte alternatif pour l'accessibilité
+  caption   String?  // légende affichée sous l'image
+
+  // Métadonnées
+  width     Int?
+  height    Int?
+  size      Int?     // taille en octets
+  format    String?  // jpg, png, webp...
+
+  // Relation optionnelle vers Article
+  articleId String?
+  article   Article? @relation(fields: [articleId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

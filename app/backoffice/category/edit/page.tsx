@@ -1,4 +1,4 @@
-import { prisma } from "../../../src/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import { Article } from "@/prisma/generated/client";
 
 export default async function Page() {
